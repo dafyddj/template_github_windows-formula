@@ -1,10 +1,19 @@
 #!/bin/sh
+set -o nounset # Treat unset variables as an error and immediately exit
+set -o errexit # If a command fails exit the whole script
 
 ###############################################################################
 # (A) Update `FORMULA` with `${nextRelease.version}`
 ###############################################################################
 sed -i -e "s_^\(version:\).*_\1 ${1}_" FORMULA
 
+###############################################################################
+# (B) Use `maintainer` to update AUTHORS.md
+###############################################################################
+
+export MAINTAINER_TOKEN=${GH_TOKEN}
+go get github.com/myii/maintainer
+maintainer contributor
 
 ###############################################################################
 # (B) Use `m2r` to convert automatically produced `.md` docs to `.rst`

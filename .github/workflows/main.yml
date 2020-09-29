@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+name: main
+'on': [push, pull_request]
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  pre-commit:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.0
+        with:
+          extra_args: --verbose --all-files
+  release:
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    needs: [commitlint, pre-commit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '^1.15'
+      - uses: cycjimmy/semantic-release-action@v2
+        with:
+          branch: master
+          extra_plugins: |
+            @semantic-release/changelog@3
+            @semantic-release/exec@3
+            @semantic-release/git@7
+          semantic_version: 15.14
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
