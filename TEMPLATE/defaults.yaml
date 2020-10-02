@@ -2,6 +2,7 @@
 # vim: ft=yaml
 ---
 TEMPLATE:
+  arch: amd64
   pkg:
     name: TEMPLATE
   rootgroup: root

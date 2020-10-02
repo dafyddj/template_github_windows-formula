@@ -12,7 +12,7 @@ control 'TEMPLATE package' do
     when 'centos-6', 'amazonlinux-1'
       'cronie'
     else
-      'bash'
+      'putty'
     end
 
   describe package(package_name) do
