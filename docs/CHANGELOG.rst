@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`4.2.2 <https://github.com/dafyddj/template_github_windows-formula/compare/v4.2.1...v4.2.2>`_ (2020-10-06)
+--------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* run in GitHub Actions (\ `22a34ac <https://github.com/dafyddj/template_github_windows-formula/commit/22a34ac16181e567a3340081c0132cc8a8ed3801>`_\ )
+
+Tests
+^^^^^
+
+
+* **kitchen+github:** add Windows testing (\ `f51e849 <https://github.com/dafyddj/template_github_windows-formula/commit/f51e84957db00111f3e66901eb364ba430ff537d>`_\ )
+
 `4.2.1 <https://github.com/saltstack-formulas/template-formula/compare/v4.2.0...v4.2.1>`_ (2020-09-21)
 ----------------------------------------------------------------------------------------------------------
 
