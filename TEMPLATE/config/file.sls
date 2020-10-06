@@ -17,9 +17,6 @@ TEMPLATE-config-file-file-managed:
                               lookup='TEMPLATE-config-file-file-managed'
                  )
               }}
-    - mode: 644
-    - user: root
-    - group: {{ TEMPLATE.rootgroup }}
     - makedirs: True
     - template: jinja
     - require:

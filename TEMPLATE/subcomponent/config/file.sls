@@ -18,9 +18,6 @@ TEMPLATE-subcomponent-config-file-file-managed:
                               use_subpath=True
                  )
               }}
-    - mode: 644
-    - user: root
-    - group: {{ TEMPLATE.rootgroup }}
     - makedirs: True
     - template: jinja
     - require_in:

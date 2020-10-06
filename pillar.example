@@ -12,10 +12,12 @@ TEMPLATE:
   # test the template formula itself. You should set these parameters to
   # examples that make sense in the contexto of the formula you're writing.
   pkg:
-    name: bash
+    name: putty
   service:
-    name: systemd-journald
-  config: /etc/template-formula.conf
+    name: BITS
+  config: C:\template-formula.conf
+  subcomponent:
+    config: C:\TEMPLATE-subcomponent-formula.conf
 
   tofs:
     # The files_switch key serves as a selector for alternative

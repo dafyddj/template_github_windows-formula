@@ -4,7 +4,6 @@
 platform_finger = system.platform[:finger].split('.').first.to_s
 
 control 'TEMPLATE service' do
-  impact 0.5
   title 'should be running and enabled'
 
   # Overide by `platform_finger`
@@ -13,7 +12,7 @@ control 'TEMPLATE service' do
     when 'centos-6', 'amazonlinux-1'
       'crond'
     else
-      'systemd-journald'
+      'BITS'
     end
 
   describe service(service_name) do

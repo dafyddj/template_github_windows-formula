@@ -7,7 +7,8 @@
 
 {%- do salt['log.debug']('### MAP.JINJA DUMP ###\n' ~ mapdata | yaml(False)) %}
 
-{%- set output_file = '/tmp/salt_mapdata_dump.yaml' %}
+{%- set tmp = {'Windows': 'TMP'}[grains['kernel']] | default('TMPDIR') %}
+{%- set output_file = salt['environ.get'](tmp) ~ '/salt_mapdata_dump.yaml' %}
 
 {{ tplroot }}-mapdata-dump:
   file.managed:

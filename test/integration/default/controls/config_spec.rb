@@ -3,11 +3,9 @@
 control 'TEMPLATE configuration' do
   title 'should match desired lines'
 
-  describe file('/etc/template-formula.conf') do
+  describe file('C:\template-formula.conf') do
     it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    its('mode') { should cmp '0644' }
+    it { should be_owned_by 'BUILTIN\Administrators' }
     its('content') do
       should include(
         'This is another example file from SaltStack template-formula.'
@@ -16,7 +14,7 @@ control 'TEMPLATE configuration' do
     its('content') { should include '"added_in_pillar": "pillar_value"' }
     its('content') { should include '"added_in_defaults": "defaults_value"' }
     its('content') { should include '"added_in_lookup": "lookup_value"' }
-    its('content') { should include '"config": "/etc/template-formula.conf"' }
+    its('content') { should include '"config": "C:\\\\template-formula.conf"' }
     its('content') { should include '"lookup": {"added_in_lookup": "lookup_value",' }
     its('content') { should include '"pkg": {"name": "' }
     its('content') { should include '"service": {"name": "' }
